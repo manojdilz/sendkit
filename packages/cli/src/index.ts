@@ -1,10 +1,6 @@
-import { Command } from "commander"
+import { Command } from "commander";
+import { sendTelegramMessage } from "sendkit-core";
 
-type TelegramResponse = {
-    ok: boolean;
-    result?: { message_id: number };
-    description?: string;
-};
 
 const program = new Command();
 
@@ -30,41 +26,21 @@ program
             process.exit(1);
         }
 
-        const res = await fetch(
-            `https://api.telegram.org/bot${token}/sendMessage`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: message,
-                }),
-            }
-        );
+        try {
+            const result = await sendTelegramMessage({
+                botToken: token,
+                chatId,
+                message,
+            });
 
-        const data = (await res.json()) as TelegramResponse;
-
-        if (!res.ok || !data.ok) {
-            const detail = data.description ?? res.statusText;
-            console.error(`Telegram API request failed: ${detail}`);
+            console.log(`Sent Telegram message to chat: ${result.chatId}`);
+            console.log(`Telegram message ID: ${result.messageId}`);
+        } catch (error) {
+            const details = error instanceof Error ? error.message : String(error);
+            console.error("Failed to send Telegram message:", details);
             process.exit(1);
         }
 
-        const messageId = data.result?.message_id;
-
-        console.log(`Sent Telegram message to chat ${chatId}.`);
-
-        if (messageId !== undefined) {
-            console.log(`Telegram message ID: ${messageId}`);
-        }
     });
 
 program.parseAsync(process.argv);
-
-
-
-
-
-// https://api.telegram.org/bot8820083457:AAH9oqnC99G7dGqqpuJNk5Z6blwtXvKinSA/getUpdates
