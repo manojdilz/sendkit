@@ -116,7 +116,7 @@ app.post("/:botToken/mcp", async (c) => {
 });
 
 app.notFound((c) => {
-    return c.json({ error: c.error?.message ?? "Not found and no error msg" }, 404);
+    return c.json({ error: "Not found" }, 404);
 });
 
 const port = Number(process.env.PORT ?? 3000);
