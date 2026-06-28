@@ -1,14 +1,11 @@
 {
-    "mcpServers": {
-        "Telegram": {
-            "command": "bun",
-            "args": [
-                "run",
-                "dev:local-mcp"
-            ],
-            "env": {
-                "TELEGRAM_BOT_TOKEN": "PASTE_YOUR_TOKEN_HERE"
-            }
-        }
+  "mcpServers": {
+    "Telegram": {
+      "command": "bun",
+      "args": ["run", "dev:local-mcp"],
+      "env": {
+        "TELEGRAM_BOT_TOKEN": "PASTE_YOUR_TOKEN_HERE"
+      }
     }
+  }
 }
