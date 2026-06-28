@@ -1,6 +1,6 @@
 import { Command } from "commander";
 import { z } from "zod";
-import { sendTelegramMessage } from "sendkit-core";
+import { sendTelegramMessage } from "@manoj_dilz/sendkit-core";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";

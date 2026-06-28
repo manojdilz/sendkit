@@ -1,5 +1,5 @@
 {
-  "name": "sendkit-mcp",
+  "name": "@manoj_dilz/sendkit-local-mcp",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,8 +7,11 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
+    "@manoj_dilz/sendkit-core": "workspace:*",
     "@modelcontextprotocol/sdk": "^1.29.0",
-    "sendkit-core": "workspace:*",
     "zod": "^4.4.3"
+  },
+  "scripts": {
+    "build": "tsdown"
   }
 }
