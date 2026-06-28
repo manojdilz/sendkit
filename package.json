@@ -17,7 +17,10 @@
     "typecheck": "tsc --noEmit",
     "build:core": "bun run --filter @manoj_dilz/sendkit-core build",
     "build:cli": "bun run --filter @manoj_dilz/sendkit-cli build",
-    "build:local-mcp": "bun run --filter @manoj_dilz/sendkit-local-mcp build"
+    "build:local-mcp": "bun run --filter @manoj_dilz/sendkit-mcp build",
+    "release:pack:core": "bun run --filter @manoj_dilz/sendkit-core pack:dry",
+    "release:pack:cli": "bun run --filter @manoj_dilz/sendkit-cli pack:dry",
+    "release:pack:local-mcp": "bun run --filter @manoj_dilz/sendkit-mcp pack:dry"
   },
   "devDependencies": {
     "@types/node": "^26.0.1",
